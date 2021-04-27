@@ -59,6 +59,11 @@ class User implements UserInterface
      */
     private $photo;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Portrait::class, cascade={"persist", "remove"})
+     */
+    private $portrait;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -196,6 +201,18 @@ class User implements UserInterface
     public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getPortrait(): ?Portrait
+    {
+        return $this->portrait;
+    }
+
+    public function setPortrait(?Portrait $portrait): self
+    {
+        $this->portrait = $portrait;
 
         return $this;
     }
