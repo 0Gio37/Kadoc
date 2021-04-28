@@ -1,10 +1,45 @@
 .welcome{
+    display: flex;
+    padding: 15vh 2rem;
     .container{
-        h2{
-            span{
-                text-transform: uppercase;
+
+
+    }
+    .welcome_content{
+        display: flex;
+
+        .welcome_content_left{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            h2{
+                margin-bottom: 2rem;
+            }
+            .welcome_baseline{
+
+            }
+
+            .button_container{
+                margin-top: 5rem;
+                display: flex;
+
+
+                .cefim_button:first-child{
+                    margin-right: 2rem;
+                }
+            }
+
+        }
+        .welcome_content_right{
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 400px;
             }
         }
-
     }
 }
