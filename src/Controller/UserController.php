@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UserController extends AbstractController
 {
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
     /**
+     * @Route("/profile", name="user_profile")
      * @return Response
      */
     public function index(): Response
@@ -21,6 +30,8 @@ class UserController extends AbstractController
         /*
          * affichages : email, firstname, lastname, phone, resume, photo
          */
+        //$user = $this->entityManager->getRepository(User::class)->findOneById();
+
         return $this->render('user/index.html.twig', [
             'controller_name' => 'UserController',
             'page_name' => 'User index'
@@ -33,6 +44,7 @@ class UserController extends AbstractController
      */
     public function edit(): Response
     {
+
         return $this->render('user/edit.html.twig', [
             'controller_name' => 'UserController',
             'page_name' => 'User edit'
