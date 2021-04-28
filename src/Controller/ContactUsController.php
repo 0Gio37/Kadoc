@@ -28,7 +28,7 @@ class ContactUsController extends AbstractController
 
             $message = (new TemplatedEmail())
                 ->from($userMail)
-                ->to('romain.barbaray@gmail.com')
+                ->to('admin.test-contact@gmail.com')
                 ->subject('Inscription réussie')
                 ->htmlTemplate('mail/register.html.twig')
                 ->context([
@@ -36,6 +36,13 @@ class ContactUsController extends AbstractController
                           ]);
 
             $mailer->send($message);
+
+            $this->addFlash(
+                'notice',
+                'Votre demande a bien été envoyée!'
+            );
+
+            return $this->redirectToRoute("contact_us");
         }
 
         return $this->render('contact_us/index.html.twig', [
