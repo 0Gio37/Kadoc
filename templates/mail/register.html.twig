@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h1>Vous avez une demande d'infos</h1>
+    <span><strong>De : {{ user }} {{ userName }}</strong></span>
+
+    <p>Objet:{{ userObject }}</p>
+    <h2>Contenu :{{ userContent }}</h2>
+
+    <span>{{ userMail }}</span>
+
+
+{% endblock %}

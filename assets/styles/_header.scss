@@ -1,0 +1,27 @@
+header{
+  padding: 2rem 0;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(253,91,34,1) 0%, rgba(254,147,69,1) 100%);
+  .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .header_left{
+        color: white;
+    }
+    .header_right{
+        ul{
+          display: flex;
+          align-items: center;
+          li{
+            list-style-type: none;
+            padding: 0 2rem;
+            a{
+              text-decoration: none;
+              color: white;
+            }
+          }
+        }
+    }
+  }
+}

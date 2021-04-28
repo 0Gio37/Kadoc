@@ -1,0 +1,23 @@
+footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(253,91,34,1) 0%, rgba(254,147,69,1) 100%);
+  .container{
+    padding: 1rem 0;
+    .footer_left_content{
+      a{
+        margin: 0 1rem;
+        display: inline-block;
+        img{
+          height: 15px;
+        }
+      }
+    }
+    .footer_right_content{
+
+    }
+  }
+}
