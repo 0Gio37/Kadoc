@@ -32,7 +32,14 @@ class ContactUsController extends AbstractController
                 ->subject('Inscription réussie')
                 ->htmlTemplate('mail/register.html.twig')
                 ->context([
-                              'user' => $data['nom']
+                              'user' => $data['nom'],
+                              'userMail' => $userMail,
+                              'userObject' => $data['objet'],
+                              'userContent' => $data['contenu'],
+                              'userName' => $data['prenom'],
+
+
+
                           ]);
 
             $mailer->send($message);

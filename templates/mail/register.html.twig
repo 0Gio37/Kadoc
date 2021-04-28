@@ -2,7 +2,12 @@
 {% block body %}
 
     <h1>Vous avez une demande d'infos</h1>
+    <span><strong>De : {{ user }} {{ userName }}</strong></span>
 
-    {{ form(form) }}
+    <p>Objet:{{ userContent }}</p>
+    <h2>Contenu :{{ userObject }}</h2>
+
+    <span>{{ userMail }}</span>
+
 
 {% endblock %}
