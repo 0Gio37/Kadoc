@@ -2,7 +2,8 @@
 
 {% block title %}{{ page_name }}{% endblock %}
 
-<div></div>
 {% block body %}
+    {% include 'header.html.twig' %}
     {{ dump(app.user) }}
+    {% include 'footer.html.twig' %}
 {% endblock %}
