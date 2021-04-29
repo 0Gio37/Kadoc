@@ -5,16 +5,33 @@
 {% block body %}
     {% include 'header.html.twig' %}
 
-    <div>
-        <ul>
-            <!-- TEST -->
-            <li>{{ app.user.firstname }}</li>
-            <li>{{ app.user.lastname }}</li>
-            <li>{{ app.user.email }}</li>
-            <li>{{ app.user.phone }}</li>
-            <li>{{ app.user.resume }}</li>
-            <li><img src="{{ asset('images/profile/kadoc-pp.png') }}" alt="user picture"></li>
-        </ul>
-    </div>
+    <section class="user_profile">
+        <div class="container profile_content">
+            <div class="profile_left">
+                <div class="profile_picture">
+                    <picture>
+                        <img src="{{ asset('images/profile/kadoc-pp.png') }}" alt="user picture">
+                    </picture>
+                    <button class="cefim_button"><a href="#">Modifier ma photo</a></button>
+                </div>
+                <div class="profile_info">
+                    <ul>
+                        <li>{{ app.user.firstname }} &nbsp;&nbsp; {{ app.user.lastname }}</li>
+                        <li>{{ app.user.email }}</li>
+                        <li>{{ app.user.phone }}</li>
+                        <li>{{ app.user.resume }}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="profile_right">
+                <div class="chinese_portrait">
+                    <p>Le portrait chinois</p>  {# TODO ajouter affichage portrait chinois #}
+                </div>
+                <div class="planning">
+                    <p>Le planning</p>   {# TODO ajouter affichage planning #}
+                </div>
+            </div>
+        </div>
+    </section>
     {% include 'footer.html.twig' %}
 {% endblock %}
