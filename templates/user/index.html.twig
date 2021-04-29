@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page_name }}{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+
+    <div>
+        <ul>
+            <li>{{ app.user.firstname }}</li>
+            <li>{{ app.user.lastname }}</li>
+            <li>{{ app.user.email }}</li>
+            <li>{{ app.user.phone }}</li>
+            <li>{{ app.user.resume }}</li>
+            <li><img src="{{ asset('images/profile/kadoc-pp.png') }}" alt="user picture"></li>
+        </ul>
+    </div>
+    {% include 'footer.html.twig' %}
+{% endblock %}
