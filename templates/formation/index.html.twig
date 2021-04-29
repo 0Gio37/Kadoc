@@ -3,19 +3,25 @@
 {% block title %}Hello FormationController!{% endblock %}
 
 {% block body %}
-    <ul>
-    {% for formation in formations %}
-        <li>
-            <ul>
-                <li>Intitulé de la formation : {{ formation.intitule }} - {{ formation.slug }}</li>
-                <li>Référent : {{ formation.formateurreferent.firstname }}</li>
-                <li>Filière : {{ formation.filiere.nom }}</li>
-                <li>Nombre d'élèves : {{ formation.taillepromo }}</li>
-                <li>Début de formation : {{ formation.beginAt|date("d/m/Y") }}</li>
-                <li>Fin de formation : {{ formation.endAt|date("d/m/Y") }}</li>
-            </ul>
-        </li>
-    {% endfor %}
-    </ul>
+    <section class="section-formation">
+    <div class="container">
+
+        <ul class="layout-formation">
+            {% for formation in formations %}
+                <li class="card ">
+                    <ul>
+                        <li class="intitule"> {{ formation.intitule }} - {{ formation.slug }}</li>
+                        <li>Référent : <span class="firstname"> {{ formation.formateurreferent.firstname }}</span> <span class="lastname">{{ formation.formateurreferent.lastname }}</span></li>
+                        <li>Filière : {{ formation.filiere.nom }}</li>
+                        <li>Nombre d'élèves : {{ formation.taillepromo }}</li>
+                        <li>Début de formation : {{ formation.beginAt|date("d/m/Y") }}</li>
+                        <li>Fin de formation : {{ formation.endAt|date("d/m/Y") }}</li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    </section>
+
 
 {% endblock %}
