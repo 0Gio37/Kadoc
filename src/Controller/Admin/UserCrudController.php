@@ -6,6 +6,7 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -47,7 +48,14 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
             TelephoneField::new('phone'),
             EmailField::new('email'),
             TextEditorField::new('resume'),
-            ArrayField::new('roles'),
+            ChoiceField::new('roles', 'Roles')
+                ->allowMultipleChoices()
+                ->autocomplete()
+                ->setChoices([  'Eleve' => 'ROLE_ELEVE',
+                                 'Intervenant' => 'ROLE_INTERVENANT',
+                                 'Formateur' => 'ROLE_FORMATEUR',
+                                 'Administrateur' => 'ROLE_ADMIN']
+                ),
             TextField::new('password'),
         ];
     }
