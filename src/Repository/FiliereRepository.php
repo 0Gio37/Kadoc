@@ -40,11 +40,12 @@ class FiliereRepository extends ServiceEntityRepository
     public function findOneBySomeField($value): ?Filiere
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
+            ->andWhere('f.id = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
         ;
     }
     */
+
 }

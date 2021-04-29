@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Filiere;
 use App\Entity\Formation;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,6 +23,7 @@ class FormationController extends AbstractController
 
         return $this->render('formation/index.html.twig', [
             'formations' => $formations,
+            /*'dump' => dd($formations),*/
         ]);
     }
 }
