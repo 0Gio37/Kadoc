@@ -1,0 +1,9 @@
+<h1>Salut l'ami</h1>
+
+<p>Kadoc est heureux d'avoir créé votre compte !</p>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">Cliquez-ici pour choisir votre mot de passe</a>
+
+<p>ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<em>"Pour savoir si il va y avoir du vent il faut mettre son doigt dans le cul du coq"</em>

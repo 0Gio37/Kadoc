@@ -122,7 +122,7 @@ class ResetPasswordController extends AbstractController
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('password-confirm');
         }
 
         return $this->render('reset_password/reset.html.twig', [
@@ -130,11 +130,17 @@ class ResetPasswordController extends AbstractController
         ]);
     }
 
-    private function processSendingPasswordResetEmail(string $emailFormData, MailerInterface $mailer): RedirectResponse
+    public function processSendingPasswordResetEmail(
+        string $emailFormData,
+        MailerInterface $mailer,
+        $firstPasswordSetup = false
+    ): RedirectResponse
     {
+
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
             'email' => $emailFormData,
         ]);
+
 
         // Do not reveal whether a user account was found or not.
         if (!$user) {
@@ -156,15 +162,7 @@ class ResetPasswordController extends AbstractController
             return $this->redirectToRoute('app_check_email');
         }
 
-        $email = (new TemplatedEmail())
-            ->from(new Address('email@email.fr', 'Kadoc'))
-            ->to($user->getEmail())
-            ->subject('Your password reset request')
-            ->htmlTemplate('reset_password/email.html.twig')
-            ->context([
-                'resetToken' => $resetToken,
-            ])
-        ;
+        $email = $this->generateEmailTemplate($firstPasswordSetup, $user, $resetToken);
 
         $mailer->send($email);
 
@@ -172,5 +170,42 @@ class ResetPasswordController extends AbstractController
         $this->setTokenObjectInSession($resetToken);
 
         return $this->redirectToRoute('app_check_email');
+    }
+
+    /**
+     * @Route("/password-confirm", name="password-confirm")
+     */
+    public function passwordEditConfirm()
+    {
+        return $this->render('reset_password/confirm.html.twig', [
+        ]);
+    }
+
+    private function generateEmailTemplate($firstPasswordSetup, $user, $resetToken)
+    {
+        if($firstPasswordSetup){
+            $email = (new TemplatedEmail())
+                ->from(new Address('email@email.fr', 'Kadoc'))
+                ->to($user->getEmail())
+                ->subject('Votre compte a été créé')
+                ->htmlTemplate('reset_password/emailfirstconnexion.html.twig')
+                ->context([
+                              'resetToken' => $resetToken,
+                          ])
+            ;
+        }
+        else {
+            $email = (new TemplatedEmail())
+                ->from(new Address('email@email.fr', 'Kadoc'))
+                ->to($user->getEmail())
+                ->subject('Your password reset request')
+                ->htmlTemplate('reset_password/email.html.twig')
+                ->context([
+                              'resetToken' => $resetToken,
+                          ])
+            ;
+        }
+
+        return $email;
     }
 }
