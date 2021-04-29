@@ -11,7 +11,7 @@
 4. Créer la base de données `symfony console doctrine:database:create`
 5. Effetuer les migration de la base de données `symfony console doctrine:migrations:migrate`
 6. Faire un `npm install`
-7. Executer un `npm run build`
+7. Executer un `npm run build` (lors de la première installation, puis `npm run dev-server` par la suite)
 8. Démarrer le serveur `symfony serve`
 9. L'application est prête
 
