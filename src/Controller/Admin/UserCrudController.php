@@ -2,27 +2,19 @@
 
 namespace App\Controller\Admin;
 
-use App\Controller\ResetPasswordController;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TelephoneField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
-use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
-use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
 
 
 class UserCrudController extends AbstractCrudController implements EventSubscriberInterface
@@ -33,18 +25,15 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
     }
 
     /** @var UserPasswordEncoderInterface */
-    private $passwordEncoder;
-    private $resetPasswordHelper;
-    private $mailer;
+    private UserPasswordEncoderInterface $passwordEncoder;
+    private MailerInterface $mailer;
 
 
     public function __construct(
         UserPasswordEncoderInterface $passwordEncoder,
-        ResetPasswordHelperInterface $resetPasswordHelper,
         MailerInterface $mailer)
     {
         $this->passwordEncoder = $passwordEncoder;
-        $this->resetPasswordHelper = $resetPasswordHelper;
         $this->mailer = $mailer;
     }
 
@@ -63,7 +52,7 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
         ];
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             BeforeEntityPersistedEvent::class => 'encodePassword',
@@ -72,7 +61,7 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
         ];
     }
 
-    public function encodePassword($event)
+    public function encodePassword($event): void
     {
         $user = $event->getEntityInstance();
         if ($user->getPassword()) {
@@ -80,7 +69,7 @@ class UserCrudController extends AbstractCrudController implements EventSubscrib
         }
     }
 
-    public function sendPasswordReset($event)
+    public function sendPasswordReset($event): \Symfony\Component\HttpFoundation\Response
     {
         $user = $event->getEntityInstance();
         return $this->forward(
