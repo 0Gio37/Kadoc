@@ -1,5 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form(formPortrait) }}
+    <section id="section-portrait">
+        <h2>Portrait chinois</h2>
+
+        {{ form_start(formPortrait) }}
+        <div id="form-portrait">
+            {{ form_row(formPortrait.application) }}
+            {{ form_row(formPortrait.videoGame) }}
+            {{ form_row(formPortrait.movie) }}
+            {{ form_row(formPortrait.series) }}
+            {{ form_row(formPortrait.hero) }}
+            {{ form_row(formPortrait.book) }}
+            {{ form_row(formPortrait.website) }}
+            {{ form_row(formPortrait.language) }}
+            {{ form_row(formPortrait.song) }}
+
+            <div class="port-intro">
+                {{ form_row(formPortrait.introduction) }}
+            </div>
+            <div class="button-div">
+                {{ form_row(formPortrait.submit) }}
+            </div>
+
+        </div>
+
+        {{ form_end(formPortrait) }}
+    </section>
 {% endblock %}
