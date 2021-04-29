@@ -15,13 +15,16 @@ class PortraitController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
 
-    public function __construct(EntityManagerInterface $entityManager){
+    public function __construct(EntityManagerInterface $entityManager)
+    {
         $this->entityManager = $entityManager;
     }
+
     /**
      * @Route("/portrait", name="portrait")
      */
-    public function index(): Response
+    public function index()
+    : Response
     {
         $portraits = $this->entityManager->getRepository(Portrait::class)->findAll();
 
@@ -39,13 +42,12 @@ class PortraitController extends AbstractController
     public function new(Request $request, User $user)
     {
         $portrait = new Portrait();
-        $form = $this->createForm(PortraitType::class, $portrait);
-
+        $form     = $this->createForm(PortraitType::class, $portrait);
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
-            $portrait= $form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $portrait = $form->getData();
             $this->entityManager->persist($portrait);
             $this->entityManager->flush();
             $user->setPortrait($portrait);
@@ -54,15 +56,13 @@ class PortraitController extends AbstractController
             return $this->render(
                 'portrait/index.html.twig'
             );
-
         }
-
-
 
         return $this->render(
             'portrait/new.html.twig',
-            ['formPortrait' => $form->createView(),
-                'thisTest' => $portrait
+            [
+                'formPortrait' => $form->createView(),
+                'thisTest'     => $portrait
             ]
         );
     }
@@ -70,30 +70,25 @@ class PortraitController extends AbstractController
     /**
      * @Route("/newPortrait/{id}/edit", name="edit")
      */
-
-
-
-    public function edit(Portrait $portrait, Request $request){
-
+    public function edit(Portrait $portrait, Request $request)
+    : Response {
         $form = $this->createForm(PortraitType::class, $portrait);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            $portrait= $form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $portrait = $form->getData();
 
             $this->entityManager->persist($portrait);
             $this->entityManager->flush();
-
-
 
             return $this->render(
                 'portrait/index.html.twig'
             );
         }
+
         return $this->render(
             'portrait/new.html.twig',
             ['formPortrait' => $form->createView()]
         );
-
     }
 }
