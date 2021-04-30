@@ -10,10 +10,12 @@
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 2rem;
 
-    .card{
+
+    .card_salles{
       padding: 2rem;
 
-      .separateur{
+      .separateur_salles{
+        display: block;
         height: 2px;
         width: 100%;
         background-color: #fd7e37;
