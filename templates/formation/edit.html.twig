@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Edit formation{% endblock %}
+
+{% block body %}
+    {{ form_start(formulaire) }}
+        {{ form_row(formulaire.intitule) }}
+        {{ form_row(formulaire.slug) }}
+        {{ form_row(formulaire.beginAt) }}
+        {{ form_row(formulaire.endAt) }}
+        {{ form_row(formulaire.filiere) }}
+
+        {{ form_row(formulaire.formateur_referent) }}
+    {{ form_end(formulaire) }}
+{% endblock %}
