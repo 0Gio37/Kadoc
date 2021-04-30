@@ -16,13 +16,12 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class)
             ->add('lastname', TextType::class)
             ->add('firstname', TextType::class)
             ->add('phone', TextType::class)
             ->add('resume', TextareaType::class)
             // ->add('photo')
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, ['attr' => ['class' => 'cefim_button']])
         ;
     }
 
