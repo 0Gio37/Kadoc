@@ -12,6 +12,7 @@
                         <img src="{{ asset('images/profile/kadoc-pp.png') }}" alt="user picture">
                     </picture>
                     <button class="cefim_button"><a href="#">Modifier ma photo</a></button>
+{#                    {{ path('lien vers la route pour le changement de photo') }}#}
                 </div>
                 <div class="profile_info">
                     <ul>
@@ -20,11 +21,26 @@
                         <li>{{ app.user.phone }}</li>
                         <li>{{ app.user.resume }}</li>
                     </ul>
+                    <button class="cefim_button"><a href="{{ path('user_edit') }}">Modifier mes informations</a></button>
+                    <button class="cefim_button"><a href="{{ path('app_forgot_password_request') }}">Modifier mon mot de passe </a></button>
                 </div>
             </div>
             <div class="profile_right">
                 <div class="chinese_portrait">
                     <p>Le portrait chinois</p>  {# TODO ajouter affichage portrait chinois #}
+                    <ul>
+                    <li>{{ app.user.portrait.application }}</li>
+                    <li>{{ app.user.portrait.videoGame }}</li>
+                    <li>{{ app.user.portrait.movie }}</li>
+                    <li>{{ app.user.portrait.series }}</li>
+                    <li>{{ app.user.portrait.hero }}</li>
+                    <li>{{ app.user.portrait.book }}</li>
+                    <li>{{ app.user.portrait.website }}</li>
+                    <li>{{ app.user.portrait.language }}</li>
+                    <li>{{ app.user.portrait.song }}</li>
+                    <li>{{ app.user.portrait.introduction }}</li>
+                    </ul>
+
                 </div>
                 <div class="planning">
                     <p>Le planning</p>   {# TODO ajouter affichage planning #}

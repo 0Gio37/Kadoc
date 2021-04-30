@@ -1,0 +1,57 @@
+.edit-profile{
+  h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  #form-container{
+    margin: 0 auto;
+    max-width: 900px;
+
+    .cont-flex{
+      display: flex;
+
+      div{
+        margin-right: 20px;
+      }
+    }
+
+    &>div{
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+    }
+
+    .resume-div {
+      width: 100%;
+    }
+    .button-div {
+      button {
+        display: block;
+        margin: 0 auto;
+        background-color: transparent;
+
+        &:hover {
+          background-color: #fd7e37;
+        }
+      }
+    }
+
+    input, textarea {
+      border: none;
+      border-bottom: 1px solid #BCBCBC;
+      width: 300px;
+
+      &::placeholder {
+        font-style: italic;
+      }
+    }
+
+    textarea {
+      width: 700px;
+      height: 150px;
+    }
+  }
+}

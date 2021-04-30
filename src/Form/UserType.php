@@ -4,6 +4,10 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,15 +16,12 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
-            ->add('roles')
-            ->add('password')
-            ->add('lastname')
-            ->add('firstname')
-            ->add('phone')
-            ->add('resume')
-            ->add('photo')
-            ->add('portrait')
+            ->add('lastname', TextType::class)
+            ->add('firstname', TextType::class)
+            ->add('phone', TextType::class)
+            ->add('resume', TextareaType::class)
+            // ->add('photo')
+            ->add('submit', SubmitType::class, ['attr' => ['class' => 'cefim_button']])
         ;
     }
 
