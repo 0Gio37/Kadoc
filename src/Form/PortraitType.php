@@ -15,17 +15,72 @@ class PortraitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('application', TextType::class)
-            ->add('videoGame', TextType::class)
-            ->add('movie', TextType::class)
-            ->add('series',TextType::class)
-            ->add('hero',TextType::class)
-            ->add('book',TextType::class)
-            ->add('website',TextType::class)
-            ->add('language',TextType::class)
-            ->add('song',TextType::class)
-            ->add('introduction', TextareaType::class)
-            ->add('Enregistrer' , SubmitType::class)
+            ->add('application', TextType::class, [
+                'label' => 'Application préférée',
+                'attr' => [
+                    'placeholder' => 'Aka passe-temps aux toilettes'
+                ]
+            ])
+            ->add('videoGame', TextType::class, [
+                'label' => 'Jeu vidéo du coeur',
+                'attr' => [
+                    'placeholder' => 'Candy Crush 4ever'
+                ]
+            ])
+            ->add('movie', TextType::class, [
+                'label' => 'Film favori',
+                'attr' => [
+                    'placeholder' => 'On sait que t\'aimes Twilight'
+                ]
+            ])
+            ->add('series',TextType::class, [
+                'label' => 'Série de prédilection',
+                'attr' => [
+                    'placeholder' => 'Amour, Gloire et Beauté'
+                ]
+            ])
+            ->add('hero',TextType::class, [
+                'label' => 'Héros fétiche',
+                'attr' => [
+                    'placeholder' => 'Staline, ça compte pas'
+                ]
+            ])
+            ->add('book',TextType::class, [
+                'label' => 'Livre bien aimé',
+                'attr' => [
+                    'placeholder' => 'Martine fait du Symfony'
+                ]
+            ])
+            ->add('website',TextType::class, [
+                'label' => 'Siteweb keurkeur',
+                'attr' => [
+                    'placeholder' => 'gouter.altay.fr rpz'
+                ]
+            ])
+            ->add('language',TextType::class, [
+                'label' => 'Langage keurkeurkeur',
+                'attr' => [
+                    'placeholder' => 'On s\'en fout si t\'es bilingue'
+                ]
+            ])
+            ->add('song',TextType::class, [
+                'label' => 'Chanson que t\'aimes (g plu didé)',
+                'attr' => [
+                    'placeholder' => 'On juge pas sauf si c\'est Jul'
+                ]
+            ])
+            ->add('introduction', TextareaType::class, [
+                'label' => 'Introduction',
+                'attr' => [
+                    'placeholder' => 'Raconte nous ta life (mais tout le monde s\'en fout)'
+                ]
+            ])
+            ->add('submit' , SubmitType::class, [
+                'label' => 'Enregistrer',
+                'attr' => [
+                   'class' => 'cefim_button'
+                ]
+            ])
         ;
     }
 
