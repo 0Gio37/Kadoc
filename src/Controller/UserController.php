@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserType;
+use App\Entity\Portrait;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,13 +32,7 @@ class UserController extends AbstractController
      */
     public function index(): Response
     {
-        /*
-         * affichages : email, firstname, lastname, phone, resume, photo
-         */
-        //$user = $this->entityManager->getRepository(User::class)->findOneById();
-
         return $this->render('user/index.html.twig', [
-            'controller_name' => 'UserController',
             'page_name' => 'profil'
         ]);
     }
