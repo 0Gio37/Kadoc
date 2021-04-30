@@ -12,6 +12,7 @@
                         <img src="{{ asset('images/profile/kadoc-pp.png') }}" alt="user picture">
                     </picture>
                     <button class="cefim_button"><a href="#">Modifier ma photo</a></button>
+{#                    {{ path('lien vers la route pour le changement de photo') }}#}
                 </div>
                 <div class="profile_info">
                     <ul>
@@ -20,6 +21,8 @@
                         <li>{{ app.user.phone }}</li>
                         <li>{{ app.user.resume }}</li>
                     </ul>
+                    <button class="cefim_button"><a href="{{ path('user_edit') }}">Modifier mes informations</a></button>
+                    <button class="cefim_button"><a href="{{ path('app_forgot_password_request') }}">Modifier mon mot de passe </a></button>
                 </div>
             </div>
             <div class="profile_right">
