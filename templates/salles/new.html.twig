@@ -4,9 +4,75 @@
 
 {% block body %}
 
-    <h1>Ajouter une nouvelle salle</h1>
+{#    <div class="container">#}
+{#        <a href="#" class="btn btn-primary">Coucou</a>#}
+{#    </div>#}
 
-    {{ form(form) }}
+        {#{{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.name, 'Titre de l\'article', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.name) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.taille, 'Contenu de l\'article', {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.taille) }}
+        </div>#}
+{#        <div class="mb-3">#}
+{#            {{ form_label(form.content, 'Date de l\'article', {'label_attr': {'class': 'form-label'}}) }}#}
+{#            {{ form_widget(form.date) }}#}
+{#        </div>#}
+{#        <div class="mb-3">#}
+{#            {{ form_row(form.submit) }}#}
+{#        </div>#}
+
+    <div class="container form-salles-container">
+
+        <h1>Ajouter une nouvelle salle</h1>
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col mb-6">
+                {{ form_label(form.name, 'Ajouter le nom de la salle', {'label_attr': {'class': 'form-label mb-3'}}) }}
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                {{ form_label(form.taille, 'Ajouter la taille', {'label_attr': {'class': 'form-label mb-3'}}) }}
+                {{ form_widget(form.taille) }}
+            </div>
+            <div class="col mb-3">
+                {{ form_label(form.jauge_pandemique, 'Ajouter la jauge pandémique', {'label_attr': {'class': 'form-label mb-3'}}) }}
+                {{ form_widget(form.jauge_pandemique) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                {{ form_label(form.localisation, 'Ajouter la localisation', {'label_attr': {'class': 'form-label mb-3'}}) }}
+                {{ form_widget(form.localisation) }}
+            </div>
+            <div class="col mb-3">
+                {{ form_label(form.acces, "Ajouter l'accès", {'label_attr': {'class': 'form-label mb-3'}}) }}
+                {{ form_widget(form.acces) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                {{ form_label(form.materiel, 'Ajouter le matériel disponible', {'label_attr': {'class': 'form-label mb-3'}}) }}
+                {{ form_widget(form.materiel) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3 divacentrer">
+                {{ form_label(form.submit, 'Envoyer', {'label_attr': {'class': 'form-label mb-3'}}) }}
+                {{ form_widget(form.submit) }}
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+
 
 {#    {{ dump(Salles) }}#}
 

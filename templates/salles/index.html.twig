@@ -4,20 +4,24 @@
 
 {% block body %}
 
-    <h1>La liste des Salles</h1>
+<div class="container salles_container">
 
-    {% for salle in Salles %}
-        <div class="container">
-            <div class="">
-                <h2 class="salle_acces">{{salle.acces}}</h2>
+    <h1>La liste des Salles</h1>
+    <div class="cards_container">
+        {% for salle in Salles %}
+            <div class="card shadow">
+                <div class="salle_box d-flex align-items-center">
+                    <h2 class="salle_acces">{{salle.acces}}</h2>
+                    <p class="salle_name">Salle : {{salle.name}}</p>
+                </div>
+                <span class="separateur"></span>
                 <p class="salle_localisation">{{salle.localisation}}</p>
-                <p class="salle_name">Salle = {{salle.name}}</p>
                 <p class="salle_taille">{{salle.taille}}</p>
                 <p class="salle_materiel">{{salle.materiel}}</p>
             </div>
-        </div>
-    {% endfor %}
-
+        {% endfor %}
+    </div>
+</div>
 {#    {{ dump(Salles) }}#}
 
-{% endblock %}
+{% endblock%}

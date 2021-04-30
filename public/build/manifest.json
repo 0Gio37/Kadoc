@@ -1,6 +1,11 @@
 {
-  "build/app.css": "/build/app.4a2c2c9f.css",
-  "build/app.js": "/build/app.74385c13.js",
-  "build/runtime.js": "/build/runtime.f799512a.js",
-  "build/758.05de4b19.js": "/build/758.05de4b19.js"
+  "build/app.css": "http://localhost:8080/build/app.css",
+  "build/app.js": "http://localhost:8080/build/app.js",
+  "build/runtime.js": "http://localhost:8080/build/runtime.js",
+  "build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-0dd022.js": "http://localhost:8080/build/vendors-node_modules_symfony_stimulus-bridge_dist_index_js-node_modules_core-js_modules_es_ob-0dd022.js",
+  "build/images/house.png": "http://localhost:8080/build/images/house.843de3f6.png",
+  "build/images/person.png": "http://localhost:8080/build/images/person.7fb41591.png",
+  "build/images/hugo.svg": "http://localhost:8080/build/images/hugo.68efd5b3.svg",
+  "build/images/house.svg": "http://localhost:8080/build/images/house.5ffe5052.svg",
+  "build/images/computer.svg": "http://localhost:8080/build/images/computer.7eaee22f.svg"
 }
