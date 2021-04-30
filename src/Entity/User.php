@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -63,6 +65,16 @@ class User implements UserInterface
      * @ORM\OneToOne(targetEntity=Portrait::class, cascade={"persist", "remove"})
      */
     private $portrait;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="formateur_referent")
+     */
+    private $formation_id;
+
+    public function __construct()
+    {
+        $this->formation_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -213,6 +225,36 @@ class User implements UserInterface
     public function setPortrait(?Portrait $portrait): self
     {
         $this->portrait = $portrait;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormationId(): Collection
+    {
+        return $this->formation_id;
+    }
+
+    public function addFormationId(Formation $formationId): self
+    {
+        if (!$this->formation_id->contains($formationId)) {
+            $this->formation_id[] = $formationId;
+            $formationId->setFormateurReferent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormationId(Formation $formationId): self
+    {
+        if ($this->formation_id->removeElement($formationId)) {
+            // set the owning side to null (unless already changed)
+            if ($formationId->getFormateurReferent() === $this) {
+                $formationId->setFormateurReferent(null);
+            }
+        }
 
         return $this;
     }
