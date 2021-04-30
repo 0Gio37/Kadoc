@@ -1,0 +1,28 @@
+.form-salles-container{
+  padding: 5rem 2rem;
+
+  h1{
+    margin-bottom: 5rem;
+  }
+
+  .form-control{
+    min-height: 4rem;
+  }
+
+  .col{
+    .cefim_button{
+      margin-top: 2rem;
+      background-color: transparent;
+    }
+
+    .cefim_button:hover{
+      background-color: #fd7e37;
+      color: white;
+    }
+  }
+
+  .divacentrer{
+      display: flex;
+      justify-content: center;
+  }
+}

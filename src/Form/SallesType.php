@@ -16,17 +16,41 @@ class SallesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('taille', IntegerType::class)
-            ->add('jauge_pandemique', IntegerType::class)
-            ->add('materiel', TextareaType::class)
-            ->add('localisation', TextType::class)
-            ->add('acces', TextType::class)
+            ->add('name', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('taille', IntegerType::class, [
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('jauge_pandemique', IntegerType::class, [
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('materiel', TextareaType::class, [
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('localisation', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
+            ->add('acces', TextType::class, [
+                'attr' => [
+                    'class' => 'form-control mb-3'
+                ]
+            ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'cefim-button'
+                    'class' => 'cefim_button justify-content-center'
                 ],
-                'label' => 'Envoyer'
+                    'label' => 'Envoyer'
             ])
         ;
     }
