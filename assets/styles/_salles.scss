@@ -1,0 +1,76 @@
+.salles_container{
+  padding: 5rem 2rem;
+
+  h1{
+    margin-bottom: 3rem;
+  }
+
+  .cards_container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 2rem;
+
+
+    .card_salles{
+      padding: 2rem;
+
+      .separateur_salles{
+        display: block;
+        height: 2px;
+        width: 100%;
+        background-color: #fd7e37;
+        margin-bottom: 2rem;
+      }
+
+      .salle_box{
+        display: flex;
+        justify-content: space-between;
+        h2{
+          margin-right: 1rem;
+        }
+
+        p{
+          font-style: italic;
+          align-self: flex-end;
+        }
+      }
+
+      *{
+        margin-bottom: 1rem;
+      }
+
+      .salle_localisation, .salle_materiel, .salle_taille{
+        &:before{
+          content: '';
+          width: 20px;
+          height: 20px;
+          display: inline-block;
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-right: 1rem;
+          transform: translateY(2.5px);
+        }
+      }
+
+      .salle_localisation{
+        &:before{
+          background-image: url("../../public/images/house.svg");
+        }
+      }
+
+      .salle_taille{
+        &:before{
+          background-image: url("../../public/images/hugo.svg");
+        }
+      }
+
+      .salle_materiel{
+        font-weight: 300;
+        &:before{
+          background-image: url("../../public/images/computer.svg");
+        }
+      }
+
+    }
+  }
+}
