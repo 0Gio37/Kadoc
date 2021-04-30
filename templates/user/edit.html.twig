@@ -2,17 +2,38 @@
 
 {% block title %}{{ page_name }}{% endblock %}
 
-
 {% block body %}
 
-    <div class="example-wrapper">
-        <h1>Hello {{ controller_name }}! ✅</h1>
+    <section class="edit-profile">
+        <h2>Modifier mes informations de profil</h2>
 
-        This friendly message is coming from:
-        <ul>
-            <li>Your controller at <code><a href="{{ '/home/perso/Bureau/cefim/module-symfony/kadoc/src/Controller/UserController.php'|file_link(0) }}">src/Controller/UserController.php</a></code></li>
-            <li>Your template at <code><a href="{{ '/home/perso/Bureau/cefim/module-symfony/kadoc/templates/user/edit.html.twig'|file_link(0) }}">templates/user/edit.html.twig</a></code></li>
-        </ul>
-    </div>
+        {{ form_start(user_form) }}
+        <div id="form-container">
+            <div class="cont-flex">
+                {{ form_row(user_form.firstname) }}
+                {{ form_row(user_form.lastname) }}
+            </div>
+
+            {{ form_row(user_form.phone) }}
+            <div class="resume-div">
+                {{ form_row(user_form.resume) }}
+            </div>
+
+            <div class="button-div">
+                {{ form_row(user_form.submit) }}
+            </div>
+
+        </div>
+        {{ form_end(user_form) }}
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </section>
+
 
 {% endblock %}

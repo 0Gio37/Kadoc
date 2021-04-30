@@ -79,7 +79,7 @@ class PortraitController extends AbstractController
             $this->entityManager->persist($portrait);
             $this->entityManager->flush();
 
-            return $this->redirectToRoute('home'); //expected "user/profile"
+            return $this->redirectToRoute('user_profile');
         }
 
         return $this->render(
