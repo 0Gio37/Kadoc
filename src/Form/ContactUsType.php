@@ -46,7 +46,10 @@ class ContactUsType extends AbstractType
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Envoyer'
+                'label' => 'Envoyer',
+                'attr' => [
+                    'class' => 'cefim_button'
+                ]
             ])
         ;
     }

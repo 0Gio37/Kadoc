@@ -53,9 +53,7 @@ class PortraitController extends AbstractController
             $user->setPortrait($portrait);
             $this->entityManager->flush();
 
-            return $this->render(
-                'portrait/index.html.twig'
-            );
+            return $this->redirectToRoute('home'); //expected "user/profile"
         }
 
         return $this->render(
@@ -81,9 +79,7 @@ class PortraitController extends AbstractController
             $this->entityManager->persist($portrait);
             $this->entityManager->flush();
 
-            return $this->render(
-                'portrait/index.html.twig'
-            );
+            return $this->redirectToRoute('home'); //expected "user/profile"
         }
 
         return $this->render(
